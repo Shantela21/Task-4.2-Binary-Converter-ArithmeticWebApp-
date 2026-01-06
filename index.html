@@ -3,38 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Binary Calculator</title>
+  <title>Binary Converter & Arithmetic Web App</title>
   <link rel="stylesheet" href="App.css"/>
 </head>
 <body>
-  <div class="container">
-    <div class="tabs">
-      <button class="active">Calculator</button>
-      <button onclick="switchTab('converter')">Converter</button>
-    </div>
+  <header>
+    <h1>Binary Converter & Arithmetic Web App</h1>
+  </header>
+  
+  <main class="container">
+    <nav class="tabs">
+      <button class="tab-btn active" onclick="switchTab('calculator')">Calculator</button>
+      <button class="tab-btn" onclick="switchTab('converter')">Converter</button>
+      <button class="tab-btn" onclick="switchTab('bodmas')">BODMAS</button>
+      <button class="tab-btn" onclick="switchTab('ascii')">ASCII Table</button>
+    </nav>
 
-    <div class="calculator">
-      <label for="value1">Value 1</label>
-      <input type="text" id="value1" placeholder="Enter binary (e.g. 10101010)" />
+    <section id="calculator" class="tab-content active">
+      <h2>Binary Calculator</h2>
+      <form class="calculator-form">
+        <label for="value1">Value 1</label>
+        <input type="text" id="value1" placeholder="Enter binary (e.g. 10101010)" />
 
-    
+        <label>Operation</label>
+        <div class="operations">
+          <button type="button" onclick="setOperation('+')">+</button>
+          <button type="button" onclick="setOperation('-')">−</button>
+          <button type="button" onclick="setOperation('*')">×</button>
+          <button type="button" onclick="setOperation('/')">÷</button>
+        </div>
 
-      <label>Operation</label>
-      <div class="operations">
-        <button onclick="setOperation('+')">+</button>
-        <button onclick="setOperation('-')">−</button>
-        <button onclick="setOperation('*')">×</button>
-        <button onclick="setOperation('/')">÷</button>
+        <label for="value2">Value 2</label>
+        <input type="text" id="value2" placeholder="Enter binary (e.g. 11001100)" />
+
+        <button type="button" id="calculate" onclick="calculate()">Calculate</button>
+
+        <div class="result" id="result">Result: </div>
+      </form>
+    </section>
+
+    <section id="converter" class="tab-content">
+      <h2>Number System Converter</h2>
+      <form class="converter-form">
+        <div class="conversion-group">
+          <label for="decimalInput">Decimal Input</label>
+          <input type="text" id="decimalInput" placeholder="Enter decimal number (e.g. 42)" />
+          <button type="button" onclick="convertDecimalToBinary()">Convert to Binary</button>
+          <div class="conversion-result" id="decimalToBinaryResult"></div>
+        </div>
+
+        <div class="conversion-group">
+          <label for="binaryInput">Binary Input</label>
+          <input type="text" id="binaryInput" placeholder="Enter binary number (e.g. 101010)" />
+          <button type="button" onclick="convertBinaryToDecimal()">Convert to Decimal</button>
+          <div class="conversion-result" id="binaryToDecimalResult"></div>
+        </div>
+      </form>
+    </section>
+
+    <section id="bodmas" class="tab-content">
+      <h2>Binary BODMAS Calculator</h2>
+      <form class="bodmas-form">
+        <label for="expression">Binary Expression</label>
+        <input type="text" id="expression" placeholder="Enter binary expression (e.g. (1010 + 0101) * 10)" />
+        <button type="button" onclick="evaluateBinaryExpression()">Evaluate</button>
+        <div class="result" id="bodmasResult"></div>
+      </form>
+    </section>
+
+    <section id="ascii" class="tab-content">
+      <h2>ASCII Character Table</h2>
+      <div class="table-container">
+        <table class="ascii-table">
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Binary Code</th>
+              <th>HTML Number</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody id="asciiBody">
+          </tbody>
+        </table>
       </div>
+    </section>
+  </main>
 
-      <label for="value2">Value 2</label>
-      <input type="text" id="value2" placeholder="Enter binary (e.g. 11001100)" />
-
-      <button id="calculate" onclick="calculate()">Calculate</button>
-
-      <div class="result" id="result">Result: </div>
-    </div>
-  </div>
+  <footer>
+    <p>&copy; 2026 Binary Converter & Arithmetic Web App</p>
+  </footer>
 
   <script src="App.js"></script>
 </body>
