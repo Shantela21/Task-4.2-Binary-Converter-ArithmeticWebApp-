@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Binary Calculator</title>
+  <link rel="stylesheet" href="App.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <button class="active">Calculator</button>
+      <button onclick="switchTab('converter')">Converter</button>
+    </div>
+
+    <div class="calculator">
+      <label for="value1">Value 1</label>
+      <input type="text" id="value1" placeholder="Enter binary (e.g. 10101010)" />
+
+    
+
+      <label>Operation</label>
+      <div class="operations">
+        <button onclick="setOperation('+')">+</button>
+        <button onclick="setOperation('-')">−</button>
+        <button onclick="setOperation('*')">×</button>
+        <button onclick="setOperation('/')">÷</button>
+      </div>
+
+      <label for="value2">Value 2</label>
+      <input type="text" id="value2" placeholder="Enter binary (e.g. 11001100)" />
+
+      <button id="calculate" onclick="calculate()">Calculate</button>
+
+      <div class="result" id="result">Result: </div>
+    </div>
+  </div>
+
+  <script src="App.js"></script>
+</body>
+</html>
+
+
